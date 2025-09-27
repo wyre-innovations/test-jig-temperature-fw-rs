@@ -17,34 +17,6 @@ This project implements a temperature test jig using an STM32G0 microcontroller,
 - **LCD Interface**: 4-bit mode on GPIOB (RS, EN, D4-D7 pins)
 - **Thermistors**: 10k NTC thermistors in voltage divider with 10k fixed resistors
 
-## Software Architecture
-
-- **App Layer** (`App/app.c`, `App/app.h`): Main application logic with `setup()` and `loop()` functions
-- **LCD Driver** (`App/lcd.c`, `App/lcd.h`): 4-bit LCD control functions
-- **HAL Integration**: Uses STM32Cube HAL for GPIO, ADC, and timing
-
-## Build and Run
-
-1. Open the project in STM32CubeIDE
-2. Build the project
-3. Flash to STM32G030C6Tx board
-4. Connect LCD and thermistor circuits as per pin definitions in `main.h`
-5. Power on to see boot logo, then temperature readings
-
-## Code Structure
-
-- `Core/`: STM32Cube-generated code
-- `App/`: Application-specific code
-  - `app.c`: Main application logic
-  - `lcd.c`: LCD driver implementation
-- `Drivers/`: STM32 HAL drivers
-
-## Dependencies
-
-- STM32Cube HAL for STM32G0 series
-- Math library for Steinhart-Hart calculations
-- Standard C libraries for string formatting
-
 ## License
 
 Copyright (c) 2025 Wyre Innovations. All rights reserved.

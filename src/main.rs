@@ -46,7 +46,7 @@ fn main() -> ! {
 
     let mut rcc = rcc.freeze(config);
 
-    let _lcd_backlight = gpioc.pc13.into_push_pull_output();
+    let lcd_backlight = gpioc.pc13.into_push_pull_output();
 
     let lcd_rs = gpiob.pb8.into_push_pull_output();
     let lcd_en = gpiob.pb9.into_push_pull_output();
@@ -74,7 +74,16 @@ fn main() -> ! {
     let core_hz: u32 = rcc.clocks.core_clk.raw();
     let delay = SysDelay::new(cp.SYST, core_hz);
 
-    let lcd = Lcd::new(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, delay);
+    let lcd = Lcd::new(
+        lcd_rs,
+        lcd_en,
+        lcd_d4,
+        lcd_d5,
+        lcd_d6,
+        lcd_d7,
+        lcd_backlight,
+        delay,
+    );
 
     let mut app = App::new(adc, adc_pins, lcd);
 
